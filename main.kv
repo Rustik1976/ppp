@@ -1,0 +1,61 @@
+sm:
+    Main_Screen:
+    Screen_2:
+    Screen_3:
+
+<Main_Screen>:
+    name: 'main'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Управление экранами'
+        MDLabel:
+            text: 'Это главный экран'
+            halign: 'center'
+        MDRaisedButton:
+            text: 'К экрану 2 ->'
+            pos_hint: {'center_x':.5, 'center_y':.5}
+            on_release:
+                app.root.current = 'second'
+                root.manager.transition.direction = 'left'
+
+<Screen_2>:
+    name: 'second'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Управление экранами'
+        MDLabel:
+            text: 'Это второй экран'
+            halign: 'center'
+        MDBoxLayout:
+            orientation: 'horizontal'
+            MDRaisedButton:
+                text: '<-Назад'
+                pos_hint: {'center_x':.5, 'center_y':.07}
+                on_release:
+                    app.root.current = 'main'
+                    root.manager.transition.direction = 'right'
+            MDLabel:
+                text: ''
+            MDRaisedButton:
+                text: 'К экрану 3 ->'
+                pos_hint: {'center_x':.5, 'center_y':.07}
+                on_release:
+                    app.root.current = 'third'
+                    root.manager.transition.direction = 'left'
+
+<Screen_3>:
+    name: 'third'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'Управление экранами'
+        MDLabel:
+            text: 'Это третий экран'
+            halign: 'center'
+        MDRaisedButton:
+            text: '<-Назад'
+            on_release:
+                app.root.current = 'second'
+                root.manager.transition.direction = 'right'
